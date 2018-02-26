@@ -34,6 +34,7 @@
     <uses-permission android:name="android.permission.VIBRATE"/>
     <!-- 允许应用访问震动器 -->
     <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+
     <application
         android:name=".MyApp"
         android:allowBackup="true"
@@ -42,14 +43,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <meta-data android:name="android.webkit.WebView.EnableSafeBrowsing"
-                   android:value="true" />
-        <activity android:name=".MainActivity"
-                  android:configChanges="orientation|screenSize|keyboardHidden"
-                  android:screenOrientation="portrait"
-                  android:theme="@style/AppTheme">
-        </activity>
+        <meta-data
+            android:name="android.webkit.WebView.EnableSafeBrowsing"
+            android:value="true"/>
 
+        <activity
+            android:name=".MainActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme">
+        </activity>
         <activity
             android:name=".ui.news.AdvertActivity"
             android:screenOrientation="portrait"
@@ -68,21 +71,18 @@
             android:theme="@style/AppTheme.Transparent"
             android:windowSoftInputMode="stateAlwaysHidden">
         </activity>
-
         <activity
             android:name=".ui.jandan.ImageBrowseActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.Transparent"
             android:windowSoftInputMode="stateAlwaysHidden">
         </activity>
-
         <activity
             android:name=".ui.jandan.ReadActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.Transparent"
             android:windowSoftInputMode="stateAlwaysHidden">
         </activity>
-
         <activity
             android:name=".WelcomeActivity"
             android:screenOrientation="portrait"
