@@ -1,4 +1,4 @@
-package com.will.weiyuekotlin.base
+package com.will.weiyuekotlin.ui.base
 
 import android.app.Dialog
 import android.os.Bundle
@@ -6,7 +6,7 @@ import android.view.View
 import cn.bingoogolapple.swipebacklayout.BGASwipeBackHelper
 import com.trello.rxlifecycle2.LifecycleTransformer
 import com.will.weiyuekotlin.R
-import com.will.weiyuekotlin.listener.IBase
+import com.will.weiyuekotlin.ui.listener.IBase
 import com.will.weiyuekotlin.utils.toast
 import com.will.weiyuekotlin.widget.SimpleMultiStateView
 import javax.annotation.Nullable

@@ -1,4 +1,4 @@
-package com.will.weiyuekotlin.base
+package com.will.weiyuekotlin.ui.base
 
 import android.os.Bundle
 import android.view.MotionEvent

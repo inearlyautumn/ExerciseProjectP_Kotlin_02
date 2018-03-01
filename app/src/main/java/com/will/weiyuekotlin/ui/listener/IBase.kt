@@ -1,4 +1,4 @@
-package com.will.weiyuekotlin.listener
+package com.will.weiyuekotlin.ui.listener
 
 import android.os.Bundle
 import android.view.View

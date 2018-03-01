@@ -1,16 +1,17 @@
 package com.will.weiyuekotlin
 
-import android.support.v7.app.AppCompatActivity
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import com.will.weiyuekotlin.base.BaseActivity
-import com.will.weiyuekotlin.base.BaseContract
+import com.will.weiyuekotlin.ui.base.BaseActivity
+import com.will.weiyuekotlin.ui.base.BaseContract
 import com.will.weiyuekotlin.component.ApplicationComponent
 import com.will.weiyuekotlin.utils.ImageLoaderUtil
 import com.will.weiyuekotlin.widget.SimpleMultiStateView
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.observers.DisposableObserver
 import kotlinx.android.synthetic.main.activity_welcome.*
 import pl.droidsonroids.gif.GifDrawable
 import java.util.concurrent.TimeUnit
@@ -34,8 +35,24 @@ class WelcomeActivity : BaseActivity<BaseContract.BasePresenter>() {
         gifImageView.postDelayed({ gifDrawable.start() }, 100)
 
         ImageLoaderUtil.LoadImage(this, picUrl, iv_ad)
-        mCompositeDisposable?.add(countDown(3))
+        mCompositeDisposable?.add(countDown(3)
+                .doOnSubscribe({tv_skip.text = "跳过 4" })
+                .subscribeWith(object : DisposableObserver<Int>(){
+                    override fun onNext(t: Int) {
+                        tv_skip.text = "跳过${t + 1} "
+                    }
+
+                    override fun onError(e: Throwable) {
+
+                    }
+
+                    override fun onComplete() {
+                        toMain()
+                    }
+                }))
+                fl_ad.setOnClickListener{toMain()}
     }
+
 
     /**
      * 倒计时
@@ -46,10 +63,6 @@ class WelcomeActivity : BaseActivity<BaseContract.BasePresenter>() {
                 .observeOn(AndroidSchedulers.mainThread())
                 .map { t -> time - t.toInt() }
                 .take((time + 1).toLong())
-    }
-
-    override fun initData() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     override fun onRetry() {
@@ -64,8 +77,22 @@ class WelcomeActivity : BaseActivity<BaseContract.BasePresenter>() {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_welcome)
+    /**
+     * 跳到 MainActivity 并取消订阅
+     */
+    private fun toMain() {
+        mCompositeDisposable?.dispose()
+        val intent = Intent()
+        intent.setClass(this@WelcomeActivity, MainActivity::class.java)
+        startActivity(intent)
+        finish()
+    }
+
+    override fun onDestroy() {
+        mCompositeDisposable?.dispose()
+        super.onDestroy()
+    }
+
+    override fun initData() {
     }
 }
