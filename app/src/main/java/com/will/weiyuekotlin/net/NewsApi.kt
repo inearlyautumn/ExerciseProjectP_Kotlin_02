@@ -1,6 +1,8 @@
 package com.will.weiyuekotlin.net
 
 import android.support.annotation.StringDef
+import android.support.v7.widget.RecyclerView
+import com.will.weiyuekotlin.bean.NewsDetail
 import com.will.weiyuekotlin.bean.VideoChannelBean
 import io.reactivex.Observable
 import java.lang.annotation.Retention
@@ -31,6 +33,12 @@ class NewsApi(private val mService: NewsApiService) {
     @StringDef(ACTION_DEFAULT, ACTION_DOWN, ACTION_UP)
     @Retention(RetentionPolicy.SOURCE)
     annotation class Actions
+
+    /*
+    * 获取新闻详情
+    * */
+    fun getNewsDetail(id: String, @Actions action: String, pullNum: Int): Observable<List<NewsDetail>>
+            = mService.getNewsDetail(id, action, pullNum)
 
 //    /**
 //     * 获取视频频道列表

@@ -5,6 +5,7 @@ import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentStatePagerAdapter
 import com.will.weiyuekotlin.bean.Channel
 import com.will.weiyuekotlin.ui.base.BaseFragment
+import com.will.weiyuekotlin.ui.news.DetailFragment
 import com.will.weiyuekotlin.ui.video.DetailFragment_MembersInjector
 
 /**

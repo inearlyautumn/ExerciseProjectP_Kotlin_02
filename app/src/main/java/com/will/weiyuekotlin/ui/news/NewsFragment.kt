@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import com.will.weiyuekotlin.bean.Channel
 import com.will.weiyuekotlin.component.ApplicationComponent
+import com.will.weiyuekotlin.ui.adapter.ChannelPagerAdapter
 import com.will.weiyuekotlin.ui.base.BaseFragment
 import com.will.weiyuekotlin.ui.news.contract.NewsContract
 import com.will.weiyuekotlin.ui.news.presenter.NewsPresenter
